@@ -5,23 +5,16 @@ document.addEventListener('DOMContentLoaded', () => {
     function carregarCategories() {
         const categories = obtenirCategories();
         llistatCategories.innerHTML = '';
-
         categories.forEach(categoria => {
             const li = document.createElement('li');
-            li.textContent = categoria;
-            
-            const colorCat = document.getElementById('color-categoria');
-            const color = document.createElement('area');
-            color.textContent = colorCat
-
+            li.style.backgroundColor = categoria.color;
+            li.textContent = categoria.nom;
             const botoEliminar = document.createElement('button');
             botoEliminar.textContent = 'Eliminar';
             botoEliminar.addEventListener('click', () => {
-                eliminarCategoria(categoria);
+                eliminarCategoria(categoria.nom);
                 carregarCategories();
             });
-            
-            li.appendChild(color);
             li.appendChild(botoEliminar);
             llistatCategories.appendChild(li);
         });
@@ -29,12 +22,12 @@ document.addEventListener('DOMContentLoaded', () => {
     
     formCategoria.addEventListener('submit', (e) => {
         e.preventDefault();
-        const nomCategoria = document.getElementById('nom-categoria').value;
-        
+        const nomCategoria = document.getElementById('nom-categoria').value.trim();
+        const colorCategoria = document.getElementById('color-categoria').value;
         if (nomCategoria) {
             const categories = obtenirCategories();
-            if (!categories.includes(nomCategoria)) {
-                categories.push(nomCategoria);
+            if (!categories.some(cat => cat.nom === nomCategoria)) {
+                categories.push({ nom: nomCategoria, color: colorCategoria });
                 guardarCategories(categories);
                 carregarCategories();
                 formCategoria.reset();
@@ -44,9 +37,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    function eliminarCategoria(categoriaAEliminar) {
+    function eliminarCategoria(nomCategoria) {
         const categories = obtenirCategories();
-        const categoriesActualitzades = categories.filter(cat => cat !== categoriaAEliminar);
+        const categoriesActualitzades = categories.filter(cat => cat.nom !== nomCategoria);
         guardarCategories(categoriesActualitzades);
     }
     

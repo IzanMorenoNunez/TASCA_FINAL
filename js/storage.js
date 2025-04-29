@@ -1,8 +1,15 @@
 function obtenirTasques() {
     const tasquesJSON = localStorage.getItem('tasques');
+    if (!tasquesJSON) {
+        return [];
+    }
     try {
         const tasques = JSON.parse(tasquesJSON);
-        return tasques.filter(tasca => Tasca.validar(tasca));
+        return tasques.filter(tasca => Tasca.validar(tasca)).map(tasca => {
+            const novaTasca = new Tasca(tasca.id, tasca.titol, tasca.descripcio, tasca.data, tasca.categoria, tasca.prioritat, tasca.realitzada);
+            novaTasca.arxiuOrigen = tasca.arxiuOrigen;
+            return novaTasca;
+        });
     } catch (error) {
         console.error('Error al carregar tasques:', error);
         return [];
@@ -19,8 +26,11 @@ function guardarTasques(tasques) {
 
 function obtenirCategories() {
     const categoriesJSON = localStorage.getItem('categories');
+    if (!categoriesJSON) {
+        return [];
+    }
     try {
-        const categories = JSON.parse(categoriesJSON); // parse : converts a JavaScript Object Notation (JSON) string into an object.
+        const categories = JSON.parse(categoriesJSON);
         return categories.filter(cat => Categoria.validar(cat));
     } catch (error) {
         console.error('Error al carregar categories:', error);
@@ -33,5 +43,5 @@ function guardarCategories(categories) {
     if (categoriesValides.length !== categories.length) {
         console.warn('Algunes categories no són vàlides i no es guardaran.');
     }
-    localStorage.setItem('categories', JSON.stringify(categoriesValides)); // stringify (lo mateix que parse pero al reves) : converts a JavaScript value to a JavaScript Object Notation (JSON) string.
+    localStorage.setItem('categories', JSON.stringify(categoriesValides));
 }

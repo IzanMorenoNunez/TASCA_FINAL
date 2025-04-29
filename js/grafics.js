@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const dadesGrafic = obtenirDadesGrafic();
     new Chart(ctx, {
-        type: 'bar',
+        type: 'line',
         data: {
             labels: ['Gener', 'Febrer', 'Març', 'Abril', 'Maig', 'Juny', 'Juliol', 'Agost', 'Setembre', 'Octubre', 'Novembre', 'Desembre'],
             datasets: [{

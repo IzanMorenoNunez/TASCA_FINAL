@@ -10,7 +10,7 @@ class Tasca {
     }
 
     static validar(tasca) {
-        if (!tasca.id || !tasca.id.startsWith('task-')) {
+        if (!tasca.id || typeof tasca.id !== 'string') {
             return false;
         }
         if (!tasca.titol || typeof tasca.titol !== 'string') {
@@ -19,17 +19,18 @@ class Tasca {
         if (!tasca.descripcio || typeof tasca.descripcio !== 'string') {
             return false;
         }
-        if (!tasca.data || isNaN(new Date(tasca.data).getTime())) {
+        if (!tasca.data || typeof tasca.data !== 'string') {
             return false;
         }
-        if (!tasca.categoria || typeof tasca.categoria !== 'string') {
+        const nomCategoria = typeof tasca.categoria === 'string' ? tasca.categoria : (tasca.categoria && tasca.categoria.nom) || '';
+        if (!nomCategoria || typeof nomCategoria !== 'string') {
             return false;
         }
-        if (!['Baixa', 'Mitjana', 'Alta'].includes(tasca.prioritat)) {
+        if (!tasca.prioritat || !['Baixa', 'Mitjana', 'Alta'].includes(tasca.prioritat)) {
             return false;
         }
         if (typeof tasca.realitzada !== 'boolean') {
-            return false;
+            tasca.realitzada = false;
         }
         return true;
     }
@@ -42,6 +43,6 @@ class Categoria {
 
     static validar(categoria) {
         const nom = typeof categoria === 'string' ? categoria : categoria.nom;
-        return typeof nom === 'string' && nom.length > 0;
+        return typeof nom === 'string' && nom.trim().length > 0;
     }
 }
