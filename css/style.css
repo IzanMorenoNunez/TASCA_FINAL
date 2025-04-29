@@ -1,0 +1,241 @@
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f7fa;
+    color: #333;
+}
+
+
+nav {
+    background-color: #2c3e50;
+    padding: 15px 0;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    margin: 0 20px;
+}
+
+nav ul li a {
+    color: #ecf0f1;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: #3498db;
+}
+
+
+main {
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h1, h2 {
+    color: #2c3e50;
+    text-align: center;
+}
+
+h1 {
+    margin-bottom: 30px;
+}
+
+h2 {
+    margin-top: 40px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 10px;
+}
+
+#llistat-activitats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.tasca {
+    background-color: #ecf0f1;
+    padding: 15px;
+    border-radius: 8px;
+    flex: 1 1 300px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+}
+
+.tasca:hover {
+    transform: translateY(-5px);
+}
+
+.tasca h3 {
+    margin: 0 0 10px;
+    color: #2c3e50;
+}
+
+.tasca p {
+    margin: 5px 0;
+}
+
+.tasca button {
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    margin: 5px 5px 0 0;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.tasca button:hover {
+    background-color: #2980b9;
+}
+
+.tasca button:last-child {
+    background-color: #e74c3c;
+}
+
+.tasca button:last-child:hover {
+    background-color: #c0392b;
+}
+
+#importar-activitats {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color: #27ae60;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+#importar-activitats:hover {
+    background-color: #219653;
+}
+
+#grafic-tasques {
+    max-width: 100%;
+    margin: 0 auto;
+    display: block;
+}
+
+#form-tasca {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+#form-tasca label {
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+#form-tasca input,
+#form-tasca textarea,
+#form-tasca select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+#form-tasca textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+#form-tasca button {
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+#form-tasca button:hover {
+    background-color: #2980b9;
+}
+
+#form-categoria {
+    display: flex;
+    gap: 10px;
+    max-width: 600px;
+    margin: 0 auto 20px;
+}
+
+#form-categoria input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+#form-categoria button {
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#form-categoria button:hover {
+    background-color: #2980b9;
+}
+
+#llistat-categories {
+    list-style: none;
+    padding: 0;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+#llistat-categories li {
+    background-color: #ecf0f1;
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#llistat-categories li button {
+    background-color: #e74c3c;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#llistat-categories li button:hover {
+    background-color: #c0392b;
+}
