@@ -93,7 +93,7 @@ document.addEventListener('DOMContentLoaded', function() {
     botoImportar.addEventListener('click', function() {
         var nomArxiu = inputNomArxiu.value.trim();
         if (!nomArxiu) {
-            alert('Si us plau, introdueix el nom de l arxiu JSON (ex: activitats_001.json).');
+            alert('Introdueix el nom de l arxiu JSON (ex: activitats_001.json).');
             return;
         }
         var nomArxiuComplet = nomArxiu.endsWith('.json') ? nomArxiu : nomArxiu + '.json';
