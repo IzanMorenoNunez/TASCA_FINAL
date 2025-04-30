@@ -1,23 +1,30 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const ctx = document.getElementById('grafic-tasques').getContext('2d');
+var grafic = null;
 
-    function obtenirDadesGrafic() {
-        const tasques = obtenirTasques();
-        const mesos = Array(12).fill(0); // Array per als 12 mesos
+function obtenirDadesGrafic() {
+    var tasques = obtenirTasques();
+    var mesos = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]; // Array per als 12 mesos
 
-        tasques.forEach(tasca => {
-            if (tasca.realitzada) {
-                const data = new Date(tasca.data);
-                const mes = data.getMonth();
-                mesos[mes]++;
-            }
-        });
-
-        return mesos;
+    for (var i = 0; i < tasques.length; i++) {
+        var tasca = tasques[i];
+        if (tasca.realitzada) {
+            var data = new Date(tasca.data);
+            var mes = data.getMonth(); // 0 = Gener, 11 = Desembre
+            mesos[mes] = mesos[mes] + 1;
+        }
     }
 
-    const dadesGrafic = obtenirDadesGrafic();
-    new Chart(ctx, {
+    return mesos;
+}
+
+function actualitzarGrafic() {
+    var ctx = document.getElementById('grafic-tasques').getContext('2d');
+    var dadesGrafic = obtenirDadesGrafic();
+
+    if (grafic) {
+        grafic.destroy(); // Destruïm el gràfic anterior
+    }
+
+    grafic = new Chart(ctx, {
         type: 'line',
         data: {
             labels: ['Gener', 'Febrer', 'Març', 'Abril', 'Maig', 'Juny', 'Juliol', 'Agost', 'Setembre', 'Octubre', 'Novembre', 'Desembre'],
@@ -40,4 +47,8 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
     });
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    actualitzarGrafic();
 });

@@ -14,30 +14,15 @@
             <li><a href="categories.html">Categories</a></li>
         </ul>
     </nav>
-
     <main>
         <h1>Gestió de Categories</h1>
-        
-        <section>
-            <h2>Afegir Categoria</h2>
-            <form id="form-categoria">
-                <label for="nom-categoria">Nom de la Categoria:</label>
-                <input type="text" id="nom-categoria" name="nom-categoria" required>
-                
-                <label for="color-categoria">Color de la Categoria:</label>
-                <input type="color" id="color-categoria" name="color-categoria" required>
-                
-                <button type="submit">Afegir</button>
-            </form>
-        </section>
-
-        <section>
-            <h2>Llistat de Categories</h2>
-            <ul id="llistat-categories">
-            </ul>
-        </section>
+        <form id="form-categoria">
+            <input type="text" id="nom-categoria" placeholder="Nom de la categoria" required>
+            <input type="color" id="color-categoria" value="#ffffff">
+            <button type="submit">Afegir Categoria</button>
+        </form>
+        <ul id="llistat-categories"></ul>
     </main>
-
     <script src="./js/models.js"></script>
     <script src="./js/storage.js"></script>
     <script src="./js/categories.js"></script>

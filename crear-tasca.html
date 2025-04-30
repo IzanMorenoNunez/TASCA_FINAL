@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestor d'Activitats - Crear Tasca</title>
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <nav>
@@ -14,36 +14,33 @@
             <li><a href="categories.html">Categories</a></li>
         </ul>
     </nav>
-
     <main>
         <h1>Crear una Nova Tasca</h1>
         <form id="form-tasca">
             <label for="titol">Títol:</label>
-            <input type="text" id="titol" name="titol" required>
-
+            <input type="text" id="titol" required>
+            
             <label for="descripcio">Descripció:</label>
-            <textarea id="descripcio" name="descripcio" required></textarea>
-
+            <textarea id="descripcio" required></textarea>
+            
             <label for="data">Data:</label>
-            <input type="date" id="data" name="data" required>
-
+            <input type="date" id="data" required>
+            
             <label for="categoria">Categoria:</label>
-            <select id="categoria" name="categoria" required>
-            </select>
-
+            <select id="categoria" required></select>
+            
             <label for="prioritat">Prioritat:</label>
-            <select id="prioritat" name="prioritat" required>
-                <option value="Baixa">Baixa</option>
-                <option value="Mitjana">Mitjana</option>
+            <select id="prioritat" required>
                 <option value="Alta">Alta</option>
+                <option value="Mitjana">Mitjana</option>
+                <option value="Baixa">Baixa</option>
             </select>
-
-            <button type="submit">Afegir Tasca</button>
+            
+            <button type="submit">Crear Tasca</button>
         </form>
     </main>
-
-    <script src="./js/models.js"></script>
-    <script src="./js/storage.js"></script>
-    <script src="./js/form-tasca.js"></script>
+    <script src="js/models.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/form-tasca.js"></script>
 </body>
 </html>

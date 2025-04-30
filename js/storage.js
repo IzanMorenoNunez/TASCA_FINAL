@@ -1,47 +1,53 @@
 function obtenirTasques() {
-    const tasquesJSON = localStorage.getItem('tasques');
-    if (!tasquesJSON) {
+    var tasquesString = localStorage.getItem('tasques');
+    if (!tasquesString) {
         return [];
     }
-    try {
-        const tasques = JSON.parse(tasquesJSON);
-        return tasques.filter(tasca => Tasca.validar(tasca)).map(tasca => {
-            const novaTasca = new Tasca(tasca.id, tasca.titol, tasca.descripcio, tasca.data, tasca.categoria, tasca.prioritat, tasca.realitzada);
-            novaTasca.arxiuOrigen = tasca.arxiuOrigen;
-            return novaTasca;
-        });
-    } catch (error) {
-        console.error('Error al carregar tasques:', error);
-        return [];
+    var tasques = JSON.parse(tasquesString);
+    var tasquesValides = [];
+    for (var i = 0; i < tasques.length; i++) {
+        var tasca = tasques[i];
+        if (validarTasca(tasca)) {
+            tasquesValides.push(tasca);
+        }
     }
+    return tasquesValides;
 }
 
 function guardarTasques(tasques) {
-    const tasquesValides = tasques.filter(tasca => Tasca.validar(tasca));
-    if (tasquesValides.length !== tasques.length) {
-        console.warn('Algunes tasques no són vàlides i no es guardaran.');
+    var tasquesValides = [];
+    for (var i = 0; i < tasques.length; i++) {
+        var tasca = tasques[i];
+        if (validarTasca(tasca)) {
+            tasquesValides.push(tasca);
+        }
     }
     localStorage.setItem('tasques', JSON.stringify(tasquesValides));
 }
 
 function obtenirCategories() {
-    const categoriesJSON = localStorage.getItem('categories');
-    if (!categoriesJSON) {
+    var categoriesString = localStorage.getItem('categories');
+    if (!categoriesString) {
         return [];
     }
-    try {
-        const categories = JSON.parse(categoriesJSON);
-        return categories.filter(cat => Categoria.validar(cat));
-    } catch (error) {
-        console.error('Error al carregar categories:', error);
-        return [];
+    var categories = JSON.parse(categoriesString);
+    var categoriesValides = [];
+    for (var i = 0; i < categories.length; i++) {
+        var categoria = categories[i];
+        if (validarCategoria(categoria)) {
+            categoriesValides.push(categoria);
+        }
     }
+    return categoriesValides;
 }
 
 function guardarCategories(categories) {
-    const categoriesValides = categories.filter(cat => Categoria.validar(cat));
-    if (categoriesValides.length !== categories.length) {
-        console.warn('Algunes categories no són vàlides i no es guardaran.');
+    var categoriesValides = [];
+    for (var i = 0; i < categories.length; i++) {
+        var categoria = categories[i];
+        if (validarCategoria(categoria)) {
+            categoriesValides.push(categoria);
+        }
     }
     localStorage.setItem('categories', JSON.stringify(categoriesValides));
 }

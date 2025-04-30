@@ -89,6 +89,18 @@ h2 {
     background-color: #d4edda;
 }
 
+#llistat-realitzades .tasca.prioritat-alta {
+    background-color: rgba(255, 204, 204, 0.5);
+}
+
+#llistat-realitzades .tasca.prioritat-mitjana {
+    background-color: rgba(255, 243, 205, 0.5);
+}
+
+#llistat-realitzades .tasca.prioritat-baixa {
+    background-color: rgba(212, 237, 218, 0.5);
+}
+
 .tasca h3 {
     margin: 0 0 10px;
     color: #2c3e50;
@@ -150,7 +162,7 @@ h2 {
 
 #importar-activitats {
     padding: 10px 20px;
-    background-color: #3c5ef7;
+    background-color: #6358ff;
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -160,27 +172,28 @@ h2 {
 }
 
 #importar-activitats:hover {
-    background-color: #0726b3;
+    background-color: #0602ea;
 }
 
 #crear-tasca {
     padding: 10px 20px;
-    margin-right: 400px;
-    background-color: #3c5ef7;
+    margin-right: 350px;
+    background-color: #6358ff;
     color: #fff;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
-    text-decoration: none;
+    transition: background-color 0.3s;
 }
 
 #crear-tasca:hover {
-    background-color: #0726b3;
+    background-color: #0602ea;
 }
 
 #grafic-tasques {
     max-width: 100%;
+    height: 400px;
     margin: 0 auto;
     display: block;
 }
